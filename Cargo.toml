@@ -1,10 +1,23 @@
 [package]
 name = "rust-cli"
 version = "0.1.0"
-authors = ["runner"]
-edition = "2021"
+edition = "2018"
+description = "Simple rust cli app"
+license = "MIT OR Apache-2.0"
+authors = ["Maxim Egorov <maxim.egorov@stroylandiya.ru>"]
+keywords = ["cli", "search", "demo"]
+categories = ["command-line-utilities"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 structopt = "0.3.13"
+
+[package.metadata.rpm]
+package = "rust-cli"
+
+[package.metadata.rpm.cargo]
+buildflags = ["--release"]
+
+[package.metadata.rpm.targets]
+rust-cli = { path = "/usr/bin/rust-cli" }
